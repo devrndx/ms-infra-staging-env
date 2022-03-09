@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "rndx-terraform-backend"
+    bucket = "rndx-doongle-terraform-backend"
     key    = "terraform-env"
     region = "ap-northeast-2"
   }

@@ -94,6 +94,20 @@ module "argo-cd-server" {
   eks_nodegroup_id = module.aws-kubernetes-cluster.eks_cluster_nodegroup_id
 }
 
+module "aws-databases" {
+  source = "github.com/devrndx/ms-aws-db"
+
+  aws_region     = local.aws_region
+  mysql_password = var.mysql_password
+  vpc_id         = module.aws-network.vpc_id
+  eks_id         = data.aws_eks_cluster.msur.id
+  eks_sg_id      = module.aws-kubernetes-cluster.eks_cluster_security_group_id
+  subnet_a_id    = module.aws-network.private_subnet_ids[0]
+  subnet_b_id    = module.aws-network.private_subnet_ids[1]
+  env_name       = local.env_name
+  route53_id     = module.aws-network.route53_id
+}
+
 # Create Traefik
 module "traefik" {
   source = "github.com/devrndx/ms-traefik"

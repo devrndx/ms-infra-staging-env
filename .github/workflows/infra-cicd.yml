@@ -32,7 +32,7 @@ jobs:
       run: terraform fmt
 
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -upgrade
 
     - name: Terraform Validate
       run: terraform validate -no-color

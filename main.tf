@@ -7,7 +7,7 @@ terraform {
 }
 
 locals {
-  env_name         = "staging-rndx"
+  env_name         = "staging"
   aws_region       = "ap-northeast-2"
   k8s_cluster_name = "ms-cluster"
 }
